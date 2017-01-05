@@ -22,10 +22,10 @@ Add the service provider to the `'providers'` array in `config/app.php`:
 Jenssegers\Rollbar\RollbarServiceProvider::class,
 ```
     
-If you only want to enable Rollbar reporting for certain environments you can conditionally load the service provider in your `AppServiceProvider`:
+If you only want to enable Rollbar reporting for certain environments you can conditionally load the service provider in your `AppServiceProvider` inside the `register` method:
 
 ```php
-if ($this->app->environment('production')) {
+if ($this->app->environment() === 'production') {
     $this->app->register(\Jenssegers\Rollbar\RollbarServiceProvider::class);
 }
 ```
